@@ -77,7 +77,7 @@ WWW::Shorten::RevCanonical - Shorten URL using rev="canonical"
   );
 
   my $short_url;
-  for my $shortener (@shortenes) {
+  for my $shortener (@shorteners) {
       $short_url = $shortener->shorten($long_url)
           and last;
   }
