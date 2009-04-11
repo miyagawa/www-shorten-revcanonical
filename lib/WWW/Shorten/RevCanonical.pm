@@ -68,6 +68,20 @@ WWW::Shorten::RevCanonical - Shorten URL using rev="canonical"
 
   my $short_url = makeashorterlink($long_url); # Note that this could fail and return undef
 
+  # Or, use WWW::Shorten::Simple wrapper
+  use WWW::Shorten::Simple;
+
+  my @shorteners = (
+      WWW::Shorten::Simple->new('RevCanonical'), # Try this first
+      WWW::Shorten::Simple->new('TinyURL'),      # Then fallback to TinyURL
+  );
+
+  my $short_url;
+  for my $shortener (@shortenes) {
+      $short_url = $shortener->shorten($long_url)
+          and last;
+  }
+
 =head1 DESCRIPTION
 
 WWW::Shorten::RevCanonical is a WWW::Shorten plugin to extract
