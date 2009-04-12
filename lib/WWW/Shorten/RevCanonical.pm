@@ -2,7 +2,7 @@ package WWW::Shorten::RevCanonical;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw( makeashorterlink makealongerlink );
@@ -103,6 +103,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<WWW::Shorten>, L<http://revcanonical.wordpress.com/>
+L<WWW::Shorten>, L<WWW::Shoten::Simple>, L<http://revcanonical.wordpress.com/>
 
 =cut
