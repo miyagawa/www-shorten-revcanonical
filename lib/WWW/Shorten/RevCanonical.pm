@@ -88,7 +88,7 @@ WWW::Shorten::RevCanonical is a WWW::Shorten plugin to extract
 rev="canonical" link from HTML web pages. Unlike other URL shortening
 services, the ability to make a short URL from rev="canonical" depends
 on whether the target site implements the tag, so the call to
-C<makeashorterlink> could fail, and in that case you'll get L<undef>
+C<makeashorterlink> could fail, and in that case you'll get I<undef>
 result. You might want to fallback to other shorten services like
 I<TinyURL>.
 
