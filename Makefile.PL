@@ -2,7 +2,6 @@ use inc::Module::Install;
 name 'WWW-Shorten-RevCanonical';
 all_from 'lib/WWW/Shorten/RevCanonical.pm';
 requires 'LWP::UserAgent';
-requires 'XML::LibXML';
 requires 'WWW::Shorten';
 
 build_requires 'Test::More';

@@ -9,31 +9,20 @@ our @EXPORT = qw( makeashorterlink makealongerlink );
 
 use Carp;
 use LWP::UserAgent;
-use XML::LibXML;
 
 sub _ua {
     my $ua = LWP::UserAgent->new;
     $ua->env_proxy;
-    $ua->parse_head(0);
     $ua;
 }
 
 sub makeashorterlink {
     my $url = shift or croak "URL is required";
 
-    my $content = _ua->get($url)->content;
-
-    my $parser = XML::LibXML->new();
-    $parser->recover(1);
-    $parser->recover_silently(1);
-    $parser->keep_blanks(0);
-    $parser->expand_entities(1);
-    $parser->no_network(1);
-
-    my $doc = $parser->parse_html_string($content);
-    my @links = $doc->findnodes("//link[contains(concat(' ', \@rev, ' '), ' canonical ')]");
+    my $res  = _ua->get($url);
+    my @links = grep /^<.*?>;.*\brev="canonical"/, $res->header('Link');
     if (@links) {
-        return $links[0]->getAttribute('href');
+        return ($links[0] =~ /^<(.*?)>/)[0];
     }
 
     return;
